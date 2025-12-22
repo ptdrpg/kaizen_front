@@ -10,7 +10,7 @@ const Menu = () => {
       </div>
       <div className="flex flex-col gap-[10px] text-white">
         <Tabs defaultValue="account" className="bg-black-300 rounded-[10px]">
-          <TabsList className="w-full border-b border-b-gray-400/75 flex items-center justify-center p-[10px] text-[12px] bg-black-300 rounded-none">
+          <TabsList className="w-full border-b border-b-gray-400/75 flex items-center justify-center p-[10px] text-[12px] bg-black-300 rounded-t-[10px]">
             <TabsTrigger value="account" className="data-[state=active]:bg-black-100 text-white cursor-pointer">Create</TabsTrigger>
             <TabsTrigger value="password" className="data-[state=active]:bg-black-100 text-white cursor-pointer">Join</TabsTrigger>
           </TabsList>
