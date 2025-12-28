@@ -14,6 +14,7 @@ const Friends = () => {
     }
   },[])
   const { data } = useGetAllFriend(userId);
+  
   return (
     <div className="p-[20px]">
       <div className="grid gap-3">

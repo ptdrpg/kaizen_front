@@ -14,8 +14,6 @@ const Inbox = () => {
   },[])
 
   const { data } = useGetFriendRequest(usrId);
-  console.log(data);
-  
 
   return (
     <div className="w-full h-full p-[20px] flex flex-col">

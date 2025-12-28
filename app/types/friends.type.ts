@@ -14,3 +14,8 @@ export type SendFriendRequestType = {
   sender_id: string;
   receiver_id: string;
 }
+
+export type ConfirmFriendRequestType = {
+  message: string;
+  status: number;
+}
