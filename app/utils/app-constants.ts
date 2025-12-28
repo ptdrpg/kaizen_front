@@ -13,5 +13,6 @@ export const SECURITY_CONST = {
 export const QUERY_KEY = {
   friends: {
     all: ["friends"] as const,
+    request: ["request"] as const,
   }
 }

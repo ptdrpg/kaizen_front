@@ -10,3 +10,10 @@ export const useGetAllFriend = (id: string) => {
     queryFn: () => friendService.getAllFriends(id),
   })
 }
+
+export const useGetFriendRequest = (id: string) => {
+  return useQuery({
+    queryKey: [...QUERY_KEY.friends.request, id],
+    queryFn: () => friendService.getFriendRequest(id),
+  })
+}
