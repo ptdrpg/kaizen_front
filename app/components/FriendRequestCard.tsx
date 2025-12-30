@@ -23,7 +23,7 @@ const FriendRequestCard = ({ username, id, isAdding, status }: Props) => {
 
   const { mutate: confirmRequest } = useConfirmFriendRequest(id, usrId);
   const { mutate: sendFriendRequest } = useSendFriendRequest();
-  const { mutate: declineRequest } = useDeclineFriendRequest();
+  const { mutate: declineRequest } = useDeclineFriendRequest(usrId);
 
   const handleConfirmRequest = () => {
     if (!isAdding) {
