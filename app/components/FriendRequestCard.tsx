@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from 'react'
-import { useConfirmFriendRequest } from '~/query/friends/friend-query';
+import { useConfirmFriendRequest, useSendFriendRequest } from '~/query/friends/friend-query';
 import { getUserDataToLocalStorage } from '~/utils/local-storage.utils';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
 const FriendRequestCard = ({ username, id, isAdding, status }: Props) => {
 
   const [usrId, setUsrId] = useState<string>("");
+  const [buttonLabel, setButtonLabel] = useState<string>("");
 
   useLayoutEffect(()=> {
     const usrData = getUserDataToLocalStorage();
@@ -21,9 +22,18 @@ const FriendRequestCard = ({ username, id, isAdding, status }: Props) => {
   },[])
 
   const { mutate: confirmRequest } = useConfirmFriendRequest(id, usrId);
+  const { mutate: sendFriendRequest } = useSendFriendRequest();
 
   const handleConfirmRequest = () => {
-    confirmRequest();
+    if (!isAdding) {
+      confirmRequest();
+    } else {
+      sendFriendRequest({
+        receiver_id: id,
+        sender_id: usrId,
+      })
+      setButtonLabel("Pending")
+    }
   }
 
   return (
@@ -38,7 +48,7 @@ const FriendRequestCard = ({ username, id, isAdding, status }: Props) => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-[10px]">
-        <button className="bg-emerald-300 text-white px-[10px] py-[5px] rounded-[5px] text-[12px] cursor-pointer" onClick={handleConfirmRequest}>{ isAdding ? status == "accepted"? "Friends" : "Invite" : "Accept" }</button>
+        <button className={` text-white px-[10px] py-[5px] rounded-[5px] text-[12px] ${buttonLabel != "Pending" ? "cursor-pointer bg-emerald-300": "bg-gray-400"}`} onClick={handleConfirmRequest}>{ isAdding ? status == "accepted"? "Friends" : "Invite" : buttonLabel == "Pending" ? "Pending" : "Accept" }</button>
         {
           !isAdding && (
             <button className="bg-red-400 text-white px-[10px] py-[5px] rounded-[5px] text-[12px] cursor-pointer">Decline</button>

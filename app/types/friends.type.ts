@@ -19,3 +19,4 @@ export type ConfirmFriendRequestType = {
   message: string;
   status: number;
 }
+

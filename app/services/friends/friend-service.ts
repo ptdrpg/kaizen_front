@@ -1,4 +1,4 @@
-import type { ConfirmFriendRequestType, FriendRequestType, FriendsType } from "~/types/friends.type";
+import type { ConfirmFriendRequestType, FriendRequestType, FriendsType, SendFriendRequestType } from "~/types/friends.type";
 import { apiService } from "../custom-axios";
 import { SECURITY_CONST } from "~/utils/app-constants";
 
@@ -22,8 +22,13 @@ export class FriendService {
 
   searchPeople = async (username: string, id: string): Promise<FriendsType[]> => {
     const response = await apiService.get(`${SECURITY_CONST.FriendsEndpoint}/search/${id}?username=${username}`);
-    console.log(response.data);
     
+    return response.data.data;
+  }
+
+  sendRequest = async (data: SendFriendRequestType): Promise<ConfirmFriendRequestType> => {
+    const response = await apiService.post(SECURITY_CONST.FriendsEndpoint, data);
+
     return response.data.data;
   }
 }
