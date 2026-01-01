@@ -1,7 +1,7 @@
 
 export const SERVER_SIDE_BASE_URL = "http://localhost:4400";
 
-export const SECURITY_CONST = {
+export const AUTH_CONST = {
   loginEndpoint: "/api/v1/login",
   registerEndpoint: "/api/v1/register",
   logoutEndpoint: "/api/v1/logout",
