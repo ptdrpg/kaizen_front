@@ -1,5 +1,5 @@
 
-export const BASE_URL = "http://localhost:4400";
+export const SERVER_SIDE_BASE_URL = "http://localhost:4400";
 
 export const SECURITY_CONST = {
   loginEndpoint: "/api/v1/login",

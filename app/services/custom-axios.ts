@@ -1,9 +1,8 @@
-import { BASE_URL } from "~/utils/app-constants";
 import axios from "axios";
 import { redirect } from "react-router";
 
 export const apiService = axios.create({
-    baseURL: BASE_URL,
+    baseURL: "/",
     withCredentials: true,
     headers: {
         "Content-Type": "application/json",
